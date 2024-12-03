@@ -34,7 +34,9 @@ class ConversionWorker(QObject):
     def convert_files(self):
         pythoncom.CoInitialize()
         excel_app = win32.Dispatch("Excel.Application")
-        excel_app.Visible = False
+        excel_app.DisplayAlerts = False  # Suppress Excel prompts and popups
+        excel_app.Visible = False       # Ensure Excel runs in the background
+        excel_app.Visible = False       # Making absolutely sure
         total_files = len(self.files)
         processed_files = 0
 
@@ -193,12 +195,16 @@ class ExcelToPDFConverterApp(QMainWindow):
                 background-color: #45A049;
             }
             QProgressBar {
-                text-align: center;
-                color: white;
-                background-color: #D3D3D3;
-                border: 1px solid #4CAF50;
-                border-radius: 5px;
-            }
+                    text-align: center;
+                    color: white;
+                    background-color: #E8F5E9; /* Light green background */
+                    border: 1px solid #4CAF50;
+                    border-radius: 5px;
+                    chunk {
+                        background-color: #4CAF50; /* Match button green */
+                        border-radius: 5px;
+                    }
+                }
             QTextEdit {
                 border: 1px solid #D3D3D3;
                 border-radius: 5px;
