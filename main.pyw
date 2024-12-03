@@ -169,6 +169,12 @@ class ExcelToPDFConverterApp(QMainWindow):
         self.log_text.setStyleSheet("background-color: #f9f9f9; color: black; font-size: 12px; padding: 5px;")
         self.layout.addWidget(self.log_text)
         
+        # Add a footer label to the main window
+        self.footer_label = QLabel("Quantum Pixelator", self)
+        self.footer_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.footer_label.setStyleSheet("font-size: 12px; color: gray; padding: 10px;")
+        self.layout.addWidget(self.footer_label, alignment=Qt.AlignmentFlag.AlignBottom)
+        
         container = QWidget()
         container.setLayout(self.layout)
         self.setCentralWidget(container)
